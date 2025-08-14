@@ -28,30 +28,33 @@ public class Agent {
   public static final Agent ADOT_LATEST_RELEASE =
       new Agent("adot", "latest ADOT release", ADOT_LATEST);
 
-  static final List<String> alphaEndpoint =
-      List.of(
-          "-Dotel.smp.enabled=true",
-          "-Dotel.traces.sampler.arg=endpoint=http://localhost:8980",
-          "-Dotel.logs.exporter=none",
-          "-Dotel.metrics.exporter=none");
-  static final List<String> prodEndpoint =
+
+  static final List<String> basicConfig =
       List.of(
           "-Dotel.smp.enabled=true",
           "-Dotel.traces.sampler.arg=endpoint=http://localhost:2000",
           "-Dotel.logs.exporter=none",
           "-Dotel.metrics.exporter=none");
 
+  static final List<String> boostConfig =
+      List.of(
+          "-Dotel.smp.enabled=true",
+          "-Dotel.traces.sampler.arg=endpoint=http://localhost:2000",
+          "-Dotel.logs.exporter=none",
+          "-Dotel.metrics.exporter=none",
+          "-Daws.xray.adaptive.sampling.config=\"{version: 4.0, anomalyConditions: [{errorCodeRegex: \".*\", usage: \"both\"}]}\"");
+
   public static final Agent ORIGINAL_ADOT =
-      new Agent("original-adot", "original ADOT agent", ADOT_LATEST, prodEndpoint);
+      new Agent("original-adot", "original ADOT agent", ADOT_LATEST, basicConfig);
   public static final Agent ADAPTIVE_SAMPLING_DISABLED =
       new Agent(
-          "adaptive-sampling-disabled", "Adaptive Sampling with prod endpoint", null, prodEndpoint);
+          "adaptive-sampling-disabled", "Adaptive Sampling with prod endpoint", null, boostConfig);
   public static final Agent ADAPTIVE_SAMPLING_ENABLED =
       new Agent(
           "adaptive-sampling-enabled",
           "Adaptive Sampling with alpha endpoint",
           null,
-          alphaEndpoint);
+          boostConfig);
 
   private final String name;
   private final String description;

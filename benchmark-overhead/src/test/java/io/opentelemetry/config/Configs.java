@@ -29,8 +29,7 @@ public enum Configs {
       TestConfig.builder()
           .name("tps-1000-test")
           .description(
-              "compares no agent, latest stable, adaptive sampling sdk disabled, and adaptive
-  sampling sdk enabled at 1000 tps")
+              "compares no agent, latest stable, adaptive sampling sdk disabled, and adaptive sampling sdk enabled at 1000 tps")
           .withAgents(
               Agent.ADAPTIVE_SAMPLING_ENABLED,
               Agent.ADAPTIVE_SAMPLING_DISABLED,

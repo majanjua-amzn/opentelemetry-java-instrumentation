@@ -150,7 +150,8 @@ public class OverheadTests {
               .withNetwork(NETWORK)
               .withCopyFileToContainer(MountableFile.forHostPath("./k6"), "/app")
               .withCommand("run", "-u", "5", "-i", "200", "/app/basic.js")
-              .withStartupCheckStrategy(new OneShotStartupCheckStrategy().withTimeout(Duration.ofMinutes(5)));
+              .withStartupCheckStrategy(
+                  new OneShotStartupCheckStrategy().withTimeout(Duration.ofMinutes(5)));
       k6.start();
     }
 

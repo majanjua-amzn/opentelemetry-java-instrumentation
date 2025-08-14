@@ -27,6 +27,10 @@ public class AgentResolver {
     if (Agent.LATEST_SNAPSHOT.equals(agent)) {
       return snapshotResolver.resolve();
     }
+    if (Agent.ADAPTIVE_SAMPLING_DISABLED.equals(agent)
+        || Agent.ADAPTIVE_SAMPLING_ENABLED.equals(agent)) {
+      return Optional.of(Paths.get("./src/test/resources/adot.jar"));
+    }
     if (agent.hasUrl()) {
       return Optional.of(downloadAgent(agent.getUrl()));
     }

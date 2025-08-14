@@ -1,4 +1,7 @@
 extensions:
+  awsproxy:
+    endpoint: 0.0.0.0:2000
+    aws_endpoint: "https://alpha.us-west-2.xray.cloudwatch.aws.dev/"
   health_check:
     endpoint: 0.0.0.0:13133
 
@@ -34,4 +37,4 @@ service:
       processors: [batch]
       exporters: [debug/logging_info]
 
-  extensions: [health_check]
+  extensions: [awsproxy, health_check]

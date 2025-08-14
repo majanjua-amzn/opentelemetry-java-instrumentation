@@ -12,8 +12,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.Optional;
 import java.time.Duration;
+import java.util.Optional;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -31,10 +31,11 @@ public class LatestAgentSnapshotResolver {
       "https://oss.sonatype.org/content/repositories/snapshots/io/opentelemetry/javaagent/opentelemetry-javaagent";
   static final String LATEST_SNAPSHOT_META = BASE_URL + "/maven-metadata.xml";
 
-  private static final OkHttpClient client = new OkHttpClient.Builder()
-      .connectTimeout(Duration.ofMinutes(1))
-      .readTimeout(Duration.ofMinutes(1))
-      .build();
+  private static final OkHttpClient client =
+      new OkHttpClient.Builder()
+          .connectTimeout(Duration.ofMinutes(1))
+          .readTimeout(Duration.ofMinutes(1))
+          .build();
 
   Optional<Path> resolve() throws IOException {
     String version = fetchLatestSnapshotVersion();
@@ -109,11 +110,11 @@ public class LatestAgentSnapshotResolver {
       } catch (IOException e) {
         lastException = e;
         if (attempt < 2) {
-          logger.warn("Attempt {} to fetch {} failed: {}. Retrying...", attempt + 1, url, e.getMessage());
+          logger.warn(
+              "Attempt {} to fetch {} failed: {}. Retrying...", attempt + 1, url, e.getMessage());
         }
       }
     }
     throw lastException;
   }
 }
-

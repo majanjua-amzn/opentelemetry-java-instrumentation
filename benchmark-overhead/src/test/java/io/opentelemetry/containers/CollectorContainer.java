@@ -16,6 +16,7 @@ import org.testcontainers.utility.MountableFile;
 
 public class CollectorContainer {
 
+  static final int COLLECTOR_XRAY_PROXY_PORT = 2000;
   static final int COLLECTOR_PORT = 4317;
   static final int COLLECTOR_HEALTH_CHECK_PORT = 13133;
 
@@ -28,7 +29,7 @@ public class CollectorContainer {
         .withNetwork(network)
         .withNetworkAliases("collector")
         .withLogConsumer(new Slf4jLogConsumer(logger))
-        .withExposedPorts(COLLECTOR_PORT, COLLECTOR_HEALTH_CHECK_PORT)
+        .withExposedPorts(COLLECTOR_PORT, COLLECTOR_HEALTH_CHECK_PORT, COLLECTOR_XRAY_PROXY_PORT)
         .waitingFor(Wait.forHttp("/health").forPort(COLLECTOR_HEALTH_CHECK_PORT))
         .withCopyFileToContainer(
             MountableFile.forClasspathResource("collector.yaml"), "/etc/otel.yaml")

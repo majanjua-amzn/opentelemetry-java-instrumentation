@@ -1,7 +1,7 @@
 extensions:
   awsproxy:
     endpoint: 0.0.0.0:2000
-    aws_endpoint: "https://alpha.us-west-2.xray.cloudwatch.aws.dev/"
+    aws_endpoint: "https://xray.us-west-2.amazonaws.com"
   health_check:
     endpoint: 0.0.0.0:13133
 

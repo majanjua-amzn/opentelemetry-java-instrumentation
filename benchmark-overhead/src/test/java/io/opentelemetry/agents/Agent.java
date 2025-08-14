@@ -28,7 +28,6 @@ public class Agent {
   public static final Agent ADOT_LATEST_RELEASE =
       new Agent("adot", "latest ADOT release", ADOT_LATEST);
 
-
   static final List<String> basicConfig =
       List.of(
           "-Dotel.smp.enabled=true",
@@ -51,10 +50,7 @@ public class Agent {
           "adaptive-sampling-disabled", "Adaptive Sampling with prod endpoint", null, boostConfig);
   public static final Agent ADAPTIVE_SAMPLING_ENABLED =
       new Agent(
-          "adaptive-sampling-enabled",
-          "Adaptive Sampling with alpha endpoint",
-          null,
-          boostConfig);
+          "adaptive-sampling-enabled", "Adaptive Sampling with alpha endpoint", null, boostConfig);
 
   private final String name;
   private final String description;

@@ -23,23 +23,23 @@ public enum Configs {
               Agent.NONE)
           .warmupSeconds(60)
           .maxRequestRate(100)
-          .totalIterations(500) // Around 1 minute
+          .totalIterations(500000) // Around 1 minute
+          .build()),
+  TPS_800(
+      TestConfig.builder()
+          .name("tps-800-test")
+          .description(
+              "compares no agent, latest stable, adaptive sampling sdk disabled, and adaptive
+  sampling sdk enabled at 1000 tps")
+          .withAgents(
+              Agent.ADAPTIVE_SAMPLING_ENABLED,
+              Agent.ADAPTIVE_SAMPLING_DISABLED,
+              Agent.ORIGINAL_ADOT,
+              Agent.NONE)
+          .warmupSeconds(60)
+          .maxRequestRate(1000)
+          .totalIterations(500000)
           .build());
-  // TPS_800(
-  //     TestConfig.builder()
-  //         .name("tps-800-test")
-  //         .description(
-  //             "compares no agent, latest stable, adaptive sampling sdk disabled, and adaptive
-  // sampling sdk enabled at 1000 tps")
-  //         .withAgents(
-  //             Agent.ADAPTIVE_SAMPLING_ENABLED,
-  //             Agent.ADAPTIVE_SAMPLING_DISABLED,
-  //             Agent.ORIGINAL_ADOT,
-  //             Agent.NONE)
-  //         .warmupSeconds(60)
-  //         .maxRequestRate(1000)
-  //         .totalIterations(500)
-  //         .build());
 
   public final TestConfig config;
 

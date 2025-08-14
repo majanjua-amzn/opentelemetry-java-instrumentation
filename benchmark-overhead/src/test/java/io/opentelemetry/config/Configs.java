@@ -25,9 +25,9 @@ public enum Configs {
           .maxRequestRate(100)
           .totalIterations(500000) // Around 1 minute
           .build()),
-  TPS_800(
+  TPS_1000(
       TestConfig.builder()
-          .name("tps-800-test")
+          .name("tps-1000-test")
           .description(
               "compares no agent, latest stable, adaptive sampling sdk disabled, and adaptive
   sampling sdk enabled at 1000 tps")

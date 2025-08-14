@@ -35,22 +35,22 @@ public class Agent {
           "-Dotel.logs.exporter=none",
           "-Dotel.metrics.exporter=none");
 
-  static final List<String> boostConfig =
+  static final List<String> boostConfigAllErrors =
       List.of(
           "-Dotel.smp.enabled=true",
           "-Dotel.traces.sampler.arg=endpoint=http://localhost:2000",
           "-Dotel.logs.exporter=none",
           "-Dotel.metrics.exporter=none",
-          "-Daws.xray.adaptive.sampling.config={version: 4.0, anomalyConditions: [{errorCodeRegex: \".*\", usage: both}]}");
+          "-Daws.xray.adaptive.sampling.config={version: 1.0, anomalyConditions: [{errorCodeRegex: \".*\", usage: both}]}");
 
   public static final Agent ORIGINAL_ADOT =
       new Agent("original-adot", "original ADOT agent", ADOT_LATEST, basicConfig);
   public static final Agent ADAPTIVE_SAMPLING_DISABLED =
       new Agent(
-          "adaptive-sampling-disabled", "Adaptive Sampling with prod endpoint", null, boostConfig);
+          "adaptive-sampling-disabled", "Adaptive Sampling with no local config", null, basicConfig);
   public static final Agent ADAPTIVE_SAMPLING_ENABLED =
       new Agent(
-          "adaptive-sampling-enabled", "Adaptive Sampling with alpha endpoint", null, boostConfig);
+          "adaptive-sampling-enabled", "Adaptive Sampling with local config", null, boostConfigAllErrors);
 
   private final String name;
   private final String description;

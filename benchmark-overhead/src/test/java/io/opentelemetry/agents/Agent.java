@@ -47,10 +47,10 @@ public class Agent {
       new Agent("original-adot", "original ADOT agent", ADOT_LATEST, basicConfig);
   public static final Agent ADAPTIVE_SAMPLING_DISABLED =
       new Agent(
-          "adaptive-sampling-disabled", "Adaptive Sampling with no local config", null, basicConfig);
+          "adap-disabled", "Adaptive Sampling with no local config", null, basicConfig);
   public static final Agent ADAPTIVE_SAMPLING_ENABLED =
       new Agent(
-          "adaptive-sampling-enabled", "Adaptive Sampling with local config", null, boostConfigAllErrors);
+          "adap-enabled", "Adaptive Sampling with local config", null, boostConfigAllErrors);
 
   private final String name;
   private final String description;

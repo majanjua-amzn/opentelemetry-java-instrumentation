@@ -41,7 +41,7 @@ public class Agent {
           "-Dotel.traces.sampler.arg=endpoint=http://localhost:2000",
           "-Dotel.logs.exporter=none",
           "-Dotel.metrics.exporter=none",
-          "-Daws.xray.adaptive.sampling.config=\"{version: 4.0, anomalyConditions: [{errorCodeRegex: \".*\", usage: \"both\"}]}\"");
+          "-Daws.xray.adaptive.sampling.config={version: 4.0, anomalyConditions: [{errorCodeRegex: \".*\", usage: both}]}");
 
   public static final Agent ORIGINAL_ADOT =
       new Agent("original-adot", "original ADOT agent", ADOT_LATEST, basicConfig);

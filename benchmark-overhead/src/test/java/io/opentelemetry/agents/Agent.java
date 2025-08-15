@@ -31,14 +31,14 @@ public class Agent {
   static final List<String> basicConfig =
       List.of(
           "-Dotel.smp.enabled=true",
-          "-Dotel.traces.sampler.arg=endpoint=http://localhost:2000",
+          "-Dotel.traces.sampler.arg=endpoint=http://collector:2000",
           "-Dotel.logs.exporter=none",
           "-Dotel.metrics.exporter=none");
 
   static final List<String> boostConfigAllErrors =
       List.of(
           "-Dotel.smp.enabled=true",
-          "-Dotel.traces.sampler.arg=endpoint=http://localhost:2000",
+          "-Dotel.traces.sampler.arg=endpoint=http://collector:2000",
           "-Dotel.logs.exporter=none",
           "-Dotel.metrics.exporter=none",
           "-Daws.xray.adaptive.sampling.config={version: 1.0, anomalyConditions: [{errorCodeRegex: \".*\", usage: both}], errorCaptureLimit: { errorSpansPerSecond: 2 }}");

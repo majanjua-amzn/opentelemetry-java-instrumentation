@@ -16,26 +16,29 @@ public enum Configs {
           .name("tps-100-test")
           .description(
               "compares no agent, latest stable, adaptive sampling sdk disabled, and adaptive sampling sdk enabled at 100 tps")
-          .withAgents(Agent.ADAPTIVE_SAMPLING_ENABLED)
+          .withAgents(
+              Agent.ADAPTIVE_SAMPLING_ENABLED,
+              Agent.ADAPTIVE_SAMPLING_DISABLED,
+              Agent.ORIGINAL_ADOT,
+              Agent.NONE)
           .warmupSeconds(60)
           .maxRequestRate(100)
           .totalIterations(500) // 50 = 10 seconds
+          .build()),
+  TPS_1000(
+      TestConfig.builder()
+          .name("tps-1000-test")
+          .description(
+              "compares no agent, latest stable, adaptive sampling sdk disabled, and adaptive sampling sdk enabled at 1000 tps")
+          .withAgents(
+              Agent.ADAPTIVE_SAMPLING_ENABLED,
+              Agent.ADAPTIVE_SAMPLING_DISABLED,
+              Agent.ORIGINAL_ADOT,
+              Agent.NONE)
+          .warmupSeconds(60)
+          .maxRequestRate(1000)
+          .totalIterations(5000) // 50 = 2 seconds
           .build());
-  // TPS_1000(
-  //     TestConfig.builder()
-  //         .name("tps-1000-test")
-  //         .description(
-  //             "compares no agent, latest stable, adaptive sampling sdk disabled, and adaptive
-  // sampling sdk enabled at 1000 tps")
-  //         .withAgents(
-  //             Agent.ADAPTIVE_SAMPLING_ENABLED,
-  //             Agent.ADAPTIVE_SAMPLING_DISABLED,
-  //             Agent.ORIGINAL_ADOT,
-  //             Agent.NONE)
-  //         .warmupSeconds(60)
-  //         .maxRequestRate(1000)
-  //         .totalIterations(50) // 50 = 2 seconds
-  //         .build());
 
   public final TestConfig config;
 

@@ -23,7 +23,7 @@ public enum Configs {
               Agent.NONE)
           .warmupSeconds(60)
           .maxRequestRate(100)
-          .totalIterations(5000) // 50 = 10 seconds
+          .totalIterations(5000 * 6 * 5) // 5000 = 10 minutes
           .build()),
   TPS_1000(
       TestConfig.builder()
@@ -37,7 +37,7 @@ public enum Configs {
               Agent.NONE)
           .warmupSeconds(60)
           .maxRequestRate(1000)
-          .totalIterations(25000) // 50 = 2 seconds
+          .totalIterations(25000 * 10 * 5) // 25000 = 7 minutes
           .build());
 
   public final TestConfig config;
